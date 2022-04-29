@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import USStates from '../../Services/rest/us_states.js';
 
+import './Nav2.css';
+
 const Nav2 = () => {
   let initData = [];
   const [data, setData] = useState(initData);
@@ -16,7 +18,7 @@ const Nav2 = () => {
   // console.log('data', data);
   return (
 
-    <div className='nav'>
+    <div className='nav' id='nav2'>
       {data.map((d, i) => {
         return (
           <div key={i}>

@@ -22,27 +22,32 @@ const Details = () => {
   }, [ChosenUSState]);
 
   console.log('data.length', data.length);
+  let sum_counties = 0;
   return (
     <div className='details'>
       <div>
         {ChosenUSState.state}
       </div>
       <div>
-        {ChosenUSState.population}
+        Population: {ChosenUSState.population}
+      </div>
+      <div>
+        Number of counties: {data.length}
       </div>
       {data.length ?
         data.map((d, i) => {
+          sum_counties += d.population;
           return (
-            <div key={i}>
-              {d ?
-                `${ d.county }
-                ${d.population}`
-                : null}
+            <div key={d.county}>
+              {d.county}: {d.population}
             </div>
           )
         })
         : null}
-    </div>
+      <div>
+        Sum Counties Population: {sum_counties}; {(sum_counties === ChosenUSState.population) ? 'Population Matches State Data.' : 'Population Does not Match State Data.'}
+      </div>
+    </div >
   );
 }
 
